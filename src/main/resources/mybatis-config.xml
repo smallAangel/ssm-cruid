@@ -3,6 +3,7 @@
  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+
 	<settings>
 		<setting name="mapUnderscoreToCamelCase" value="true"/>
 		<setting name="jdbcTypeForNull" value="NULL"/>
@@ -12,11 +13,17 @@
 		<setting name="lazyLoadingEnabled" value="true"/>
 		<setting name="aggressiveLazyLoading" value="false"/>
 	</settings>
-	
+	<plugins>
+		<plugin interceptor="com.github.pagehelper.PageInterceptor">
+			<!--分页参数合理化  -->
+			<property name="reasonable" value="true"/>
+		</plugin>
+	</plugins>
 	<databaseIdProvider type="DB_VENDOR">
 		<property name="MySQL" value="mysql"/>
 		<property name="Oracle" value="oracle"/>
 		<property name="SQL Server" value="sqlserver"/>
 	</databaseIdProvider>
-	
+
+
 </configuration>
